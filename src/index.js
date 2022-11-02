@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 
 //testing git branch, edit and push
-//testing 2
+//testing 2.0
 function Square(props) {
     return (
       <button className="square" onClick={props.onClick}>
