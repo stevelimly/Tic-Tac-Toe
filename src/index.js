@@ -4,6 +4,8 @@ import './index.css';
 
 //testing git branch, edit and push
 //testing 2.0
+//testing3
+
 function Square(props) {
     return (
       <button className="square" onClick={props.onClick}>
