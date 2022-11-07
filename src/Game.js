@@ -2,7 +2,6 @@ import React from "react";
 import calculateWinner from "./calculateWinner.js";
 import Board from "./Board.js";
 
-
 class Game extends React.Component {
     constructor(props) {
         super(props);
@@ -22,6 +21,7 @@ class Game extends React.Component {
         if (calculateWinner(squares) || squares[i]) {
             return;
         }
+
         squares[i] = this.state.xIsNext ? 'X' : 'O';
         this.setState({
             history: history.concat([{
