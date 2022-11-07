@@ -5,6 +5,7 @@ import './index.css';
 //testing git branch, edit and push
 //testing 2.0
 //testing3
+//testing change name of the folder tic-tac-toe to react-tic-tac-toe
 
 function Square(props) {
     return (
