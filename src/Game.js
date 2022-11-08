@@ -55,7 +55,11 @@ class Game extends React.Component {
 
             const squareClicked = step.squareClicked;
 
-            if (squareClicked < 3){
+            if (move === 0) {
+                col = null;
+                row = null;
+            }
+            else if (squareClicked < 3){
                 col = squareClicked;
                 row = 0;
             }
