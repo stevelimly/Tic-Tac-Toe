@@ -43,6 +43,9 @@ class Game extends React.Component {
     }
 
     render() {
+        // bold current selection
+        const setBold = {fontWeight: 'bold'};
+        const setUnBold = {fontWeight: 'normal'};
 
         // history is an array
         const history = this.state.history;
@@ -66,13 +69,21 @@ class Game extends React.Component {
             if (move === 0)
                 return (
                     <li key={move}>
-                        <button onClick={() => this.jumpTo(move)}>{desc}</button> &nbsp;
+                        <button onClick={ () => {this.jumpTo(move)}}>
+                            <span style={move===this.state.stepNumber? setBold: setUnBold}>
+                                {desc}
+                            </span>
+                        </button> &nbsp;
                     </li>
                 )
             else
                 return (
                     <li key={move}>
-                        <button onClick={() => this.jumpTo(move)}>{desc}</button> &nbsp;
+                        <button onClick={ () => {this.jumpTo(move)}}>
+                            <span style={move===this.state.stepNumber? setBold: setUnBold}>
+                                {desc}
+                            </span>
+                        </button> &nbsp;
                         <label htmlFor="location">{col}, {row}</label>
                     </li>
                 );
