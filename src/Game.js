@@ -1,5 +1,6 @@
 import React from "react";
 import calculateWinner from "./calculateWinner.js";
+import calculateLocation from "./calculateLocation.js";
 import Board from "./Board.js";
 
 class Game extends React.Component {
@@ -45,8 +46,6 @@ class Game extends React.Component {
         const history = this.state.history;
         const current = history[this.state.stepNumber];
         const winner = calculateWinner(current.squares);
-        let col = null;
-        let row = null;
 
         const moves = history.map((step, move) => {
             const desc = move ?
@@ -54,23 +53,7 @@ class Game extends React.Component {
                 'Go to game start';
 
             const squareClicked = step.squareClicked;
-
-            if (move === 0) {
-                col = null;
-                row = null;
-            }
-            else if (squareClicked < 3){
-                col = squareClicked;
-                row = 0;
-            }
-            else if (squareClicked < 6){
-                col = squareClicked-3;
-                row = 1;
-            }
-            else{
-                col = squareClicked-6;
-                row = 2;
-            }
+            const [col, row] = calculateLocation([move, squareClicked]);
 
             return (
                 <li key={move}>
