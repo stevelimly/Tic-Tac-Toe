@@ -43,24 +43,39 @@ class Game extends React.Component {
     }
 
     render() {
+
+        // history is an array
         const history = this.state.history;
+
+        // go the to version where stepNumber value is
         const current = history[this.state.stepNumber];
         const winner = calculateWinner(current.squares);
 
+        // map the history version based on value(step) and index(move)
+        // value is the content in the array, index is the pointer to array
         const moves = history.map((step, move) => {
             const desc = move ?
                 'Go to move #' + move :
                 'Go to game start';
 
+            // inside history value(step) has squares[] and squareClicked attribute
             const squareClicked = step.squareClicked;
             const [col, row] = calculateLocation([move, squareClicked]);
 
-            return (
-                <li key={move}>
-                    <button onClick={() => this.jumpTo(move)}>{desc}</button> &nbsp;
-                    <label htmlFor="location">{col}, {row}</label>
-                </li>
-            );
+            // no location when no moves
+            if (move === 0)
+                return (
+                    <li key={move}>
+                        <button onClick={() => this.jumpTo(move)}>{desc}</button> &nbsp;
+                    </li>
+                )
+            else
+                return (
+                    <li key={move}>
+                        <button onClick={() => this.jumpTo(move)}>{desc}</button> &nbsp;
+                        <label htmlFor="location">{col}, {row}</label>
+                    </li>
+                );
         });
 
         let status;
